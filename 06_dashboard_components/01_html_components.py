@@ -1,9 +1,19 @@
-from os import stat_result
-import dash
-import dash_html_components as html
-import dash_core_components as dcc
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import string
+import pandas as pd
+import numpy as np
+from plotly.offline import plot
+import plotly.graph_objs as go
+import plotly.graph_objects as go # or plotly.express as px
+fig = go.Figure() # or any Plotly Express function e.g. px.bar(...)
+# fig.add_trace( ... )
+# fig.update_layout( ... )
 
-# Instanciate the app
+import dash
+from dash import html,dcc
+
 app = dash.Dash()
 
 # Define style
@@ -37,6 +47,4 @@ app.layout = html.Div(
   )
 )
 
-# Run app
-if __name__ == "__main__":
-  app.run_server(debug = True)
+app.run_server(debug=True, use_reloader=False)  # Turn off reloader if inside Jupyter
