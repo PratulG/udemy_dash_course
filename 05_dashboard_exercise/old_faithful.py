@@ -1,20 +1,19 @@
-#######
-# Objective: build a dashboard that imports OldFaithful.csv
-# from the data directory, and displays a scatterplot.
-# The field names are:
-# 'D' = date of recordings in month (in August),
-# 'X' = duration of the current eruption in minutes (to nearest 0.1 minute),
-# 'Y' = waiting time until the next eruption in minutes (to nearest minute).
-######
-
-# Import libraries and modules
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import plotly.graph_objs as go
 import pandas as pd
+import numpy as np
+import plotly.express as px
+import string
+import pandas as pd
+import numpy as np
+from plotly.offline import plot
+import plotly.graph_objs as go
+import plotly.graph_objects as go # or plotly.express as px
+fig = go.Figure() # or any Plotly Express function e.g. px.bar(...)
+# fig.add_trace( ... )
+# fig.update_layout( ... )
 
-# Instanciate the app
+import dash
+from dash import html,dcc
+
 app = dash.Dash()
 
 # Load the data
@@ -46,6 +45,4 @@ app.layout = html.Div([
   )
 ])
 
-# Run app
-if __name__ == '__main__':
-    app.run_server(debug = True)
+app.run_server(debug=True, use_reloader=False)  # Turn off reloader if inside Jupyter
